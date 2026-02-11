@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "collegeSchedule.API", "collegeSchedule.API\collegeSchedule.API.csproj", "{6B4BA23C-5B2A-4FE5-9689-06494622C42F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B4BA23C-5B2A-4FE5-9689-06494622C42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B4BA23C-5B2A-4FE5-9689-06494622C42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B4BA23C-5B2A-4FE5-9689-06494622C42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B4BA23C-5B2A-4FE5-9689-06494622C42F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0599E3D-227A-4379-B5B8-DE1E13763307}
+	EndGlobalSection
+EndGlobal
