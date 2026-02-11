@@ -1,8 +1,7 @@
 using collegeSchedule.API.Data;
 using collegeSchedule.API.Middlewares;
 using collegeSchedule.API.Services;
-using Microsoft.EntityFrameworkCore; 
-using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +14,6 @@ var connectionString = $"Host={Environment.GetEnvironmentVariable("DB_HOST")};"
                      + $"Username={Environment.GetEnvironmentVariable("DB_USER")};"
                      + $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")};";
 
-//Регистрация AppDbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
@@ -35,7 +33,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-// app.UseMiddleware<ExceptionMiddleware>(); // Пока не создан, закомментируйте
+app.UseMiddleware<ExceptionMiddleware>();
+app.UseAuthorization();
 app.UseRouting(); // Важно для маршрутизации контроллеров
 app.MapControllers(); // Карта контроллеров
 

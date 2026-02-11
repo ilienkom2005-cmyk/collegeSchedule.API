@@ -5,6 +5,11 @@ namespace collegeSchedule.API.Data
 {
     public class AppDbContext:DbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+
+        }
+
         public DbSet<Building> Buildings => Set<Building>();
         public DbSet<Classroom> Classrooms => Set<Classroom>();
         public DbSet<Teacher> Teachers => Set<Teacher>();
