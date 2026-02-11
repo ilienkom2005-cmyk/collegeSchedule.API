@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="DTO\" />
     <Folder Include="Services\" />
     <Folder Include="Middlewares\" />
   </ItemGroup>
