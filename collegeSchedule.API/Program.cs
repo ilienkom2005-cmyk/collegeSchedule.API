@@ -1,6 +1,23 @@
+using collegeSchedule.API.Data;
+using collegeSchedule.API.Middlewares;
+using collegeSchedule.API.Services;
+using Microsoft.EntityFrameworkCore; 
+using System.Reflection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+DotNetEnv.Env.Load();
+
+//Формирование строки подключения из переменных
+var connectionString = $"Host={Environment.GetEnvironmentVariable("DB_HOST")};"
+                     + $"Port={Environment.GetEnvironmentVariable("DB_PORT")};"
+                     + $"Database={Environment.GetEnvironmentVariable("DB_NAME")};"
+                     + $"Username={Environment.GetEnvironmentVariable("DB_USER")};"
+                     + $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")};";
+
+//Регистрация AppDbContext
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -9,7 +26,6 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -17,9 +33,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
+// app.UseMiddleware<ExceptionMiddleware>(); // Пока не создан, закомментируйте
+app.UseRouting(); // Важно для маршрутизации контроллеров
+app.MapControllers(); // Карта контроллеров
 
 app.Run();
